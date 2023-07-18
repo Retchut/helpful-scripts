@@ -22,8 +22,8 @@ file_remove_ending(){
     filename="${fullfilename%.*}"
     extension="${fullfilename##*.}"
 
-    newfilename=${$filename::-$remove_num}
-    # mv "$dirname/$filename$extension" "$dirname/$newfilename$extension"
+    newfilename=${filename::-$remove_num}
+    mv "$dirname/$fullfilename" "$dirname/$newfilename.$extension"
 }
 
 remove_num=$1
