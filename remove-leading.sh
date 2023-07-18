@@ -14,19 +14,19 @@
 
 
 file_remove_leading(){
-    toremove=$1
-    filepath=$2
+    toremove="$1"
+    filepath="$2"
 
-    fullfilename=$(basename -- "$filepath")
-    dirname=$(dirname -- "$filepath")
+    fullfilename="$(basename -- "$filepath")"
+    dirname="$(dirname -- "$filepath")"
     newfilename=$(echo $fullfilename | sed "s/$toremove//")
 
     mv "$dirname/$fullfilename" "$dirname/$newfilename"
 }
 
-toremove=$1
+toremove=$(printf '%q\n' "$1")
 
 for filepath in "${@:2}"
-do 
-    file_remove_leading $toremove $filepath
+do
+    file_remove_leading "$toremove" "$filepath"
 done

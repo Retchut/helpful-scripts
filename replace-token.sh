@@ -18,8 +18,8 @@ file_replace_token(){
     token="$2"
     filepath="$3"
 
-    fullfilename=$(basename -- "$filepath")
-    dirname=$(dirname -- "$filepath")
+    fullfilename="$(basename -- "$filepath")"
+    dirname="$(dirname -- "$filepath")"
     filename="${fullfilename%.*}"
     extension="${fullfilename##*.}"
 
@@ -28,8 +28,9 @@ file_replace_token(){
     mv "$dirname/$fullfilename" "$dirname/$newfilename.$extension"
 }
 
-delim=$1
-token=$2
+toremove=$(printf '%q\n' "$1")
+delim=$(printf '%q\n' "$1")
+token=$(printf '%q\n' "$2")
 
 for filepath in "${@:3}"
 do 
