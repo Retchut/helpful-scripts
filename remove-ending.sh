@@ -5,12 +5,12 @@
 #    ./remove-ending.sh <string to remove> <filepath1> <filepath2> <filepath3>
 #
 # Examples:
-#    ./remove-ending.sh the_cake_is_a_ ./files/*
+#    ./remove-ending.sh 4 ./files/*
 #           or
-#    ./remove-ending.sh the_cake_is_a_ ./files/the_cake_is_a_lie.txt ./files/the_cake_is_a_cat.txt
+#    ./remove-ending.sh 4 ./files/the_cake_is_a_lie.txt ./files/the_cake_is_a_cat.txt
 #
-# file "./files/the_cake_is_a_lie.txt" is moved to "./files/lie.txt"
-# file "./files/the_cake_is_a_cat.txt" is moved to "./files/cat.txt"
+# file "./files/the_cake_is_a_lie.txt" is moved to "./files/the_cake_is_a.txt"
+# file "./files/the_cake_is_a_cat.txt" is moved to "./files/the_cake_is_a.txt"
 
 
 file_remove_ending(){

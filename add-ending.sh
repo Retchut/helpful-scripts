@@ -2,7 +2,7 @@
 
 # This script will rename all files passed as parameters, adding a strig (passed as parameter) at the end of their from their filenames, and preserving the rest of the string
 # Usage:
-#    ./add-ending.sh <string to remove> <filepath1> <filepath2> <filepath3>
+#    ./add-ending.sh <string to add> <filepath1> <filepath2> <filepath3>
 #
 # Examples:
 #    ./add-ending.sh ".jp" ./subtitles/*.srt
