@@ -2,7 +2,7 @@
 
 # This script will rename all files passed as parameters, removing the last N characters (number passed as parameter) from their filenames, and preserving the rest of the string
 # Usage:
-#    ./remove-ending.sh <string to remove> <filepath1> <filepath2> <filepath3>
+#    ./remove-ending.sh <number to remove> <filepath1> <filepath2> <filepath3>
 #
 # Examples:
 #    ./remove-ending.sh 4 ./files/*
