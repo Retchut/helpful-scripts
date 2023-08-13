@@ -12,16 +12,15 @@
 # file "./files/the_cake_is_a_lie.txt" is moved to "./files/lie.txt"
 # file "./files/the_cake_is_a_cat.txt" is moved to "./files/cat.txt"
 
-
 file_remove_leading(){
     toremove="$1"
     filepath="$2"
-
-    fullfilename="$(basename -- "$filepath")"
+    basename="$(basename -- "$filepath")"
     dirname="$(dirname -- "$filepath")"
-    newfilename=$(echo $fullfilename | sed "s/$toremove//")
 
-    mv "$dirname/$fullfilename" "$dirname/$newfilename"
+    newfilename=$(echo $basename | sed "s/$toremove//")
+
+    mv "$dirname/$basename" "$dirname/$newfilename"
 }
 
 toremove=$(printf '%q\n' "$1")

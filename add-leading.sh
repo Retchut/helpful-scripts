@@ -12,19 +12,25 @@
 # file "./subtitles/1.srt" is moved to "./subtitles/episode1.srt"
 # file "./subtitles/2.srt" is moved to "./subtitles/episode2.srt"
 
-
 file_add_leading(){
     to_add="$1"
     filepath="$2"
-
-    fullfilename="$(basename -- "$filepath")"
+    finalname=""
+    basename="$(basename -- "$filepath")"
     dirname="$(dirname -- "$filepath")"
-    filename="${fullfilename%.*}"
-    extension="${fullfilename##*.}"
 
-    newfilename="$to_add$filename"
+    if [ -d $filepath ]; then
+        newfoldername="$to_add$basename"
+        finalname="$dirname/$newfoldername"
+    else
+        filename="${basename%.*}"
+        extension="${basename##*.}"
 
-    mv "$dirname/$fullfilename" "$dirname/$newfilename.$extension"
+        newfilename="$to_add$filename"
+        finalname="$dirname/$newfilename.$extension"
+    fi
+
+    mv "$dirname/$basename" "$finalname"
 }
 
 to_add=$1

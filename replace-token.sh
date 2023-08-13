@@ -17,15 +17,22 @@ file_replace_token(){
     delim="$1"
     token="$2"
     filepath="$3"
-
-    fullfilename="$(basename -- "$filepath")"
+    finalname=""
+    basename="$(basename -- "$filepath")"
     dirname="$(dirname -- "$filepath")"
-    filename="${fullfilename%.*}"
-    extension="${fullfilename##*.}"
 
-    newfilename="${filename//$delim/$token}"
+    if [ -d $filepath ]; then
+        newfoldername="${basename//$delim/$token}"
+        finalname="$dirname/$newfoldername"
+    else
+        filename="${basename%.*}"
+        extension="${basename##*.}"
 
-    mv "$dirname/$fullfilename" "$dirname/$newfilename.$extension"
+        newfilename="${filename//$delim/$token}"
+        finalname="$dirname/$newfilename.$extension"
+    fi
+
+    mv "$dirname/$basename" "$finalname"
 }
 
 delim=$(printf '%q\n' "$1")

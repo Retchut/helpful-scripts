@@ -16,15 +16,22 @@
 file_add_ending(){
     to_add="$1"
     filepath="$2"
-
-    fullfilename="$(basename -- "$filepath")"
+    finalname=""
+    basename="$(basename -- "$filepath")"
     dirname="$(dirname -- "$filepath")"
-    filename="${fullfilename%.*}"
-    extension="${fullfilename##*.}"
 
-    newfilename="$filename$to_add"
+    if [ -d $filepath ]; then
+        newfoldername="$basename$to_add"
+        finalname="$dirname/$newfoldername"
+    else
+        filename="${basename%.*}"
+        extension="${basename##*.}"
 
-    mv "$dirname/$fullfilename" "$dirname/$newfilename.$extension"
+        newfilename="$filename$to_add"
+        finalname="$dirname/$newfilename.$extension"
+    fi
+
+    mv "$dirname/$basename" "$finalname"
 }
 
 to_add=$1
