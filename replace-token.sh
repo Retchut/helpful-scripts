@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# This script will rename the file passed as parameter, replacing all instances of the delimiter passed as parameter with another token
 # This script will rename all files passed as parameters, replacing all instances of the delimiter passed as parameter with another token, and preserving the rest of the string
 # Usage:
 #    ./replace-token.sh <delimiter> <new token> <filepath1> <filepath2> <filepath3>
