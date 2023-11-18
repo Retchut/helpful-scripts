@@ -19,18 +19,18 @@ file_add_ending(){
     finalname=""
     basename="$(basename -- "$filepath")"
     dirname="$(dirname -- "$filepath")"
-
-    if [ -d $filepath ]; then
+    
+    if [ -d "$filepath" ]; then
         newfoldername="$basename$to_add"
         finalname="$dirname/$newfoldername"
     else
         filename="${basename%.*}"
         extension="${basename##*.}"
-
+        
         newfilename="$filename$to_add"
         finalname="$dirname/$newfilename.$extension"
     fi
-
+    
     mv "$dirname/$basename" "$finalname"
 }
 

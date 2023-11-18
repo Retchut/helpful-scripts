@@ -19,18 +19,18 @@ file_replace_token(){
     finalname=""
     basename="$(basename -- "$filepath")"
     dirname="$(dirname -- "$filepath")"
-
-    if [ -d $filepath ]; then
+    
+    if [ -d "$filepath" ]; then
         newfoldername="${basename//$delim/$token}"
         finalname="$dirname/$newfoldername"
     else
         filename="${basename%.*}"
         extension="${basename##*.}"
-
+        
         newfilename="${filename//$delim/$token}"
         finalname="$dirname/$newfilename.$extension"
     fi
-
+    
     mv "$dirname/$basename" "$finalname"
 }
 
@@ -38,6 +38,6 @@ delim=$(printf '%q\n' "$1")
 token="$2"
 
 for filepath in "${@:3}"
-do 
+do
     file_replace_token "$delim" "$token" "$filepath"
 done

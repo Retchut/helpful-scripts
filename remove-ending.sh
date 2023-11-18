@@ -18,19 +18,19 @@ file_remove_ending(){
     finalname=""
     basename="$(basename -- "$filepath")"
     dirname="$(dirname -- "$filepath")"
-
-
-    if [ -d $filepath ]; then
+    
+    
+    if [ -d "$filepath" ]; then
         newfoldername=${basename::-$remove_num}
         finalname="$dirname/$newfoldername"
     else
         filename="${basename%.*}"
         extension="${basename##*.}"
-
+        
         newfilename=${filename::-$remove_num}
         finalname="$dirname/$newfilename.$extension"
     fi
-
+    
     mv "$dirname/$basename" "$finalname"
 }
 

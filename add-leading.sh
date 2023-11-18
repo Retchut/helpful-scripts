@@ -18,18 +18,18 @@ file_add_leading(){
     finalname=""
     basename="$(basename -- "$filepath")"
     dirname="$(dirname -- "$filepath")"
-
-    if [ -d $filepath ]; then
+    
+    if [ -d "$filepath" ]; then
         newfoldername="$to_add$basename"
         finalname="$dirname/$newfoldername"
     else
         filename="${basename%.*}"
         extension="${basename##*.}"
-
+        
         newfilename="$to_add$filename"
         finalname="$dirname/$newfilename.$extension"
     fi
-
+    
     mv "$dirname/$basename" "$finalname"
 }
 
