@@ -44,7 +44,7 @@ then
         BASENAME="$(basename -- "$FILEPATH")"
         FILENAME="${BASENAME%.*}"
         EXT="${BASENAME##*.}"
-        if [ -d $filepath ] && [ $EXT == "mkv" ]; then
+        if [ -d "$FILEPATH" ] && [ $EXT == "mkv" ]; then
             echo "Extracting track $TRACK from $DIRNAME/$BASENAME -> $DIRNAME/$FILENAME.$LANGEXT.$TYPE";
             mkvextract tracks "$DIRNAME/$BASENAME" $TRACK:"$DIRNAME/$FILENAME.$LANGEXT.$TYPE"
         else
