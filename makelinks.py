@@ -15,15 +15,6 @@ import sys
 import os
 
 def make_links(src_dir, dest_dir, create_dirs):
-
-    # checking if we were provided with just a file
-    if (os.path.isfile(src_dir)):
-        try:
-            os.symlink(src_dir, dest_dir)
-            return
-        except FileExistsError:
-            print("File already exists: {}".format(dest_dir))
-
     files = os.listdir(src_dir)
     for filename in files:
         if (os.path.isfile(src_dir + filename)):
@@ -55,6 +46,14 @@ def main():
     create_dirs = sys.argv[1].lower() == 'true'
     folder_from = sys.argv[2]
     final_dir = sys.argv[3]
+
+    # checking if we were provided with just a file
+    if (os.path.isfile(folder_from)):
+        try:
+            os.symlink(folder_from, final_dir)
+        except FileExistsError:
+            print("File already exists: {}".format(final_dir))
+        return
 
     if(final_dir[-1] != '/'):
         final_dir += '/'
