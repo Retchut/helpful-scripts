@@ -15,6 +15,15 @@ import sys
 import os
 
 def make_links(src_dir, dest_dir, create_dirs):
+
+    # checking if we were provided with just a file
+    if (os.path.isfile(src_dir)):
+        try:
+            os.symlink(src_dir, dest_dir)
+            return
+        except FileExistsError:
+            print("File already exists: {}".format(dest_dir))
+
     files = os.listdir(src_dir)
     for filename in files:
         if (os.path.isfile(src_dir + filename)):
@@ -36,6 +45,10 @@ def make_links(src_dir, dest_dir, create_dirs):
 
 
 def main():
+    if len(sys.argv) != 4:
+        print("Usage: python makelinks.py <recursive (true/false)> <source directory/file> <destination directory/file>")
+        sys.exit(1)
+
     if(sys.argv[1].lower() != 'true' and sys.argv[1].lower() != 'false'):
         print("Argument 1 must be either \'true\' or \'false\'.")
         return
